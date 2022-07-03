@@ -1,0 +1,75 @@
+/* Global definitions */
+:root {
+    /* Light color theme */
+    --light-theme-text-color: hsl(0,0%,10%);
+    --light-theme-background-color: hsl(40,10%,90%);
+    /* Dark color theme */
+    --dark-theme-text-color: var(--light-theme-background-color);
+    --dark-theme-background-color: var(--light-theme-text-color);
+}
+
+:root {
+    --text-color: var(--light-theme-text-color);
+    --background-color: var(--light-theme-background-color);
+}
+
+@media (prefers-color-scheme: dark) {
+:root {
+    --text-color: var(--dark-theme-text-color);
+    --background-color: var(--dark-theme-background-color);
+}
+}
+
+/* Global settings */
+:root {
+    color: var(--text-color);
+    box-sizing: border-box;
+}
+
+html {
+    /* Sizing */
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    /* Flexbox */
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    /* Colors */
+    background-color: var(--background-color);
+}
+
+body {
+    /* Sizing */
+    max-width: 1080px;
+    margin: 0;
+    padding: 1rem;
+    /* Flexbox */
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+header,
+footer {
+    display: flex;
+    flex-flow: row wrap;
+    flex: 0.1;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: scroll;
+}
+
+* {
+    border: 0.1rem solid var(--text-color);
+}
