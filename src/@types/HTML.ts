@@ -1,10 +1,9 @@
-import type { ElementAttributes } from './ElementAttributes.js';
 import type { ElementConfig } from './ElementConfig.js';
 
 /**
  * List of valid attributes for HTML elements.
  */
-export interface HTMLElementAttributes extends ElementAttributes {
+export interface HTMLElementAttributes {
     'accept': string;
     'accept-charset': string;
     'accesskey': string;

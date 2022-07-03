@@ -1,10 +1,9 @@
-import type { ElementAttributes } from './ElementAttributes.js';
 import type { ElementConfig } from './ElementConfig.js';
 
 /**
  * List of valid attributes for SVG elements.
  */
-export interface SVGElementAttributes extends ElementAttributes {
+export interface SVGElementAttributes {
     'accent-height': string;
     'accumulate': string;
     'additive': string;
@@ -262,6 +261,7 @@ export interface SVGElementAttributes extends ElementAttributes {
     'yChannelSelector': string;
     'z': string;
     'zoomAndPan': string;
+    [key: string]: string;
 }
 
 /**
