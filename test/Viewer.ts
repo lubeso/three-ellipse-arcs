@@ -1,7 +1,7 @@
 import { Ellipse } from '../src/Ellipse.js';
 import type { ViewerConfig } from '../src/Viewer.js';
 import { Viewer } from '../src/Viewer.js';
-import { expect } from '@esm-bundle/chai';
+import { expect, should } from '@esm-bundle/chai';
 
 const TEST_CONFIG: ViewerConfig = {
     width: 100,
@@ -70,7 +70,7 @@ describe('Viewer', () => {
             expect(viewer.getEllipse(0)).to.be.equal(ellipse);
         });
         it('i: out of bounds', () => {
-            expect(viewer.getEllipse(1)).to.throw();
+            should().Throw(() => viewer.getEllipse(1), Error);
         });
     });
 });
