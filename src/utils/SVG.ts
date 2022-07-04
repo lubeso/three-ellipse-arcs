@@ -2,11 +2,14 @@ import type {
     SVGElementAttributes,
     SVGElementConfig
 } from '../@types/SVG.js';
+import { initElement } from './initElement.js';
+
+export const NAMESPACE_URI = 'http://www.w3.org/2000/svg';
 
 /**
  * Create the specified SVG element with the specified configuration.
- * @param _qualifiedName the SVG element tag name
- * @param _config the SVG element configuration
+ * @param qualifiedName the SVG element tag name
+ * @param config the SVG element configuration
  */
 export function createElement<
     K extends keyof SVGElementTagNameMap,
@@ -14,8 +17,10 @@ export function createElement<
     P extends Node,
     C extends Node
 >(
-    _qualifiedName: K,
-    _config: Partial<SVGElementConfig<SVGElementTagNameMap[K], A, P, C>>
+    qualifiedName: K,
+    config: Partial<SVGElementConfig<SVGElementTagNameMap[K], A, P, C>>
 ): SVGElementTagNameMap[K] {
-    throw new Error('not implemented yet');
+    const element = document.createElementNS(NAMESPACE_URI, qualifiedName);
+    initElement(element, config);
+    return element;
 }

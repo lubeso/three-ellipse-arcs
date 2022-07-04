@@ -2,11 +2,12 @@ import type {
     HTMLElementAttributes,
     HTMLElementConfig
 } from '../@types/HTML.js';
+import { initElement } from './initElement.js';
 
 /**
  * Create the specified HTML element with the specified configuration.
- * @param _qualifiedName the HTML element tag name
- * @param _config the HTML element configuration
+ * @param qualifiedName the HTML element tag name
+ * @param config the HTML element configuration
  */
 export function createElement<
     K extends keyof HTMLElementTagNameMap,
@@ -14,8 +15,10 @@ export function createElement<
     P extends Node,
     C extends Node
 >(
-    _qualifiedName: K,
-    _config: Partial<HTMLElementConfig<HTMLElementTagNameMap[K], A, P, C>>
+    qualifiedName: K,
+    config: Partial<HTMLElementConfig<HTMLElementTagNameMap[K], A, P, C>>
 ): HTMLElementTagNameMap[K] {
-    throw new Error('not implemented yet');
+    const element = document.createElement(qualifiedName);
+    initElement(element, config);
+    return element;
 }
