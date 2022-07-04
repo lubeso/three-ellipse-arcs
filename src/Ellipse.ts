@@ -1,6 +1,8 @@
 import type { Point2D } from './@types/Point2D.js';
 import { Renderable } from './Renderable.js';
 
+import { SVG } from './utils.js';
+
 /**
  * Type representing llipse configuration settings.
  */
@@ -40,33 +42,41 @@ export class Ellipse extends Renderable<SVGEllipseElement> {
         pointer: SVGEllipseElement
     ) {
         super(pointer);
-        throw new Error('not implemented yet');
+        this.config = Object.assign({}, config);
     }
 
     public get center(): Point2D {
-        throw new Error('not implemented yet');
+        return this.config.center;
     }
 
     public get rx(): number {
-        throw new Error('not implemented yet');
+        return this.config.rx;
     }
 
     public get ry(): number {
-        throw new Error('not implemented yet');
+        return this.config.ry;
     }
 
     public get rotation(): number {
-        throw new Error('not implemented yet');
+        return this.config.rotation;
     }
 
     /**
      * Create a new ellipse.
      * @param config ellipse configuration
      */
-    public static make(
-        config: Partial<EllipseConfig>
-    ): Ellipse {
-        throw new Error('not implemented yet');
+    public static make(config: EllipseConfig): Ellipse {
+        const pointer = SVG.createElement('ellipse', {
+            attributes: {
+                'cx': `${config.center.x}`,
+                'cy': `${config.center.y}`,
+                'rx': `${config.rx}`,
+                'ry': `${config.ry}`,
+                'transform': `rotate(${config.rotation})`,
+                'transform-origin': `${config.center.x} ${config.center.y}`,
+            }
+        });
+        return new Ellipse(config, pointer);
     }
 
 }
