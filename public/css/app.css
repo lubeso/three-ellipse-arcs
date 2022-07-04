@@ -1,0 +1,13 @@
+.app {
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+.app ellipse {
+    fill: none;
+    stroke: var(--text-color);
+    stroke-width: 0.2rem;
+}
