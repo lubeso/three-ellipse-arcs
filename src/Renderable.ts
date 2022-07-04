@@ -17,11 +17,11 @@ export abstract class Renderable<T extends Element> {
 
     /**
      * Create a new Renderable instance.
-     * @param _pointer the corresponding DOM element 
+     * @param pointer the corresponding DOM element 
      * for this instance
      */
-    protected constructor(_pointer: T) {
-        throw new Error('not implemented yet');
+    protected constructor(pointer: T) {
+        this.pointer = pointer;
     }
 
 }
