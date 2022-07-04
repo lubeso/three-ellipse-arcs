@@ -6,3 +6,5 @@ export type { Point2D } from './@types/Point2D.js';
 
 export type { ViewerConfig } from './Viewer.js';
 export type { EllipseConfig } from './Ellipse.js';
+
+export {};
