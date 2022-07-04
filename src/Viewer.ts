@@ -1,6 +1,8 @@
 import { Renderable } from './Renderable.js';
 import { Ellipse } from './Ellipse.js';
 
+import { SVG } from './utils.js'
+
 /**
  * Type representing viewer configuration settings.
  */
@@ -27,7 +29,7 @@ export class Viewer extends Renderable<SVGSVGElement> {
     /**
      * Ellipses to be rendered.
      */
-    private readonly ellipses: Ellipse[];
+    private readonly ellipses: Ellipse[] = [];
 
     /**
      * Create a new Viewer instance.
@@ -39,7 +41,7 @@ export class Viewer extends Renderable<SVGSVGElement> {
         pointer: SVGSVGElement
     ) {
         super(pointer);
-        throw new Error('not implemented yet');
+        this.config = Object.assign({}, config);
     }
 
     /**
@@ -47,7 +49,14 @@ export class Viewer extends Renderable<SVGSVGElement> {
      * @param i numerical index of desired ellipse.
      */
     public getEllipse(i: number): Ellipse {
-        throw new Error('not implemented yet');
+        if (i >= 0 && i < this.ellipses.length) {
+            return this.ellipses[i];
+        } else {
+            const message = i < 0 ?
+                `Index cannot be negative` :
+                `Index cannot be greater than ${this.ellipses.length}`;
+            throw new Error(message);
+        }
     }
 
     /**
@@ -55,15 +64,16 @@ export class Viewer extends Renderable<SVGSVGElement> {
      * @param ellipse the ellipse to add.
      */
     public addEllipse(ellipse: Ellipse): Viewer {
-        throw new Error('not implemented yet');
+        this.ellipses.push(ellipse);
+        return this;
     }
 
     public get width(): number {
-        throw new Error('not implemented yet');
+        return this.config.width;
     }
 
     public get height(): number {
-        throw new Error('not implemented yet');
+        return this.config.height;
     }
 
     /**
@@ -71,7 +81,12 @@ export class Viewer extends Renderable<SVGSVGElement> {
      * @param config viewer configuration.
      */
     public static make(config: ViewerConfig): Viewer {
-        throw new Error('not implemented yet');
+        const pointer = SVG.createElement('svg', {
+            attributes: {
+                viewBox: `0 0 ${config.width} ${config.height}`,
+            }
+        });
+        return new Viewer(config, pointer)
     }
 
 }
