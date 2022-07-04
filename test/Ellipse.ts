@@ -1,4 +1,3 @@
-
 import type { EllipseConfig } from '../src/Ellipse.js';
 import { Ellipse } from '../src/Ellipse.js';
 import { expect } from '@esm-bundle/chai';
