@@ -20,7 +20,7 @@ describe('Ellipse', () => {
             const tests = [
                 { actual: ellipse.center, expected: ellipseConfig.center },
                 { actual: ellipse.rx, expected: ellipseConfig.rx },
-                { actual: ellipse.ry, expected: ellipseConfig.ry }
+                { actual: ellipse.ry, expected: ellipseConfig.ry },
                 { actual: ellipse.rotation, expected: ellipseConfig.rotation },
             ];
             for (const { actual, expected } of tests) {
