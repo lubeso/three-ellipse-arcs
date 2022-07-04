@@ -4,7 +4,7 @@ import { Renderable } from './Renderable.js';
 import { SVG } from './utils.js';
 
 /**
- * Type representing llipse configuration settings.
+ * Type representing ellipse configuration settings.
  */
 export interface EllipseConfig {
     /**
