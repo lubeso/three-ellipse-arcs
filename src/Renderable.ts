@@ -13,7 +13,7 @@ export abstract class Renderable<T extends Element> {
      * A Renderable instance is defiend by its corresponding 
      * element in the document.
      */
-    protected readonly pointer: T;
+    public readonly pointer: T;
 
     /**
      * Create a new Renderable instance.
